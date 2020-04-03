@@ -108,8 +108,27 @@ HMACSHA256(
 * But "JWT authentication" is not a standard and does not specify how the Client obtains the token in the first place (the 1st stage). That is where the perceived complexity of OAuth comes from: it also defines various ways in which the Client can obtain an access token from something that is called an Authorization Server.
 * __So the real difference is that JWT is just a token format, OAuth 2.0 is a protocol (that may use a JWT as a token format).__
 
+## How do you store JWT?
+* If you store it inside `localStorage`, it’s accessible by any script inside your page (which is as bad as it sounds, as an XSS attack can let an external attacker get access to the token).
+* The JWT needs to be stored inside an `httpOnly cookie`, a special kind of cookie that’s only sent in HTTP requests to the server, and it’s never accessible (both for reading or writing) from JavaScript running in the browser.
+
+## When not to use JWTs: Sessions tokens for regular web apps
+...
+
+## [What really is the difference between session and token based authentication](https://dev.to/thecodearcher/what-really-is-the-difference-between-session-and-token-based-authentication-2o39)
+
+### Session-based
+![](../images/session-based-auth.png)
+
+### Token-based
+![](../images/token-based-auth.png)
+* user state is stored on the client.
+* token based authentication scales better than that of a session because tokens are stored on the client side while session makes use of the server memory
+
 ## Resources
 * https://jwt.io/introduction/
 * https://stackoverflow.com/questions/27301557/if-you-can-decode-jwt-how-are-they-secure
 * https://developer.okta.com/blog/2018/06/20/what-happens-if-your-jwt-is-stolen
 * https://zapier.com/engineering/apikey-oauth-jwt/
+* https://blog.logrocket.com/jwt-authentication-best-practices/
+* https://developer.okta.com/blog/2017/08/17/why-jwts-suck-as-session-tokens
