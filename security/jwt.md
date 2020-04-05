@@ -103,7 +103,8 @@ HMACSHA256(
 * in some cases, a stolen JWT can actually be worse than a stolen username and password because it means someone can bypass the user's multi-factor authentication setup (which would otherwise be quite difficult).
 
 ## [What are the main differences between JWT and OAuth authentication?](https://stackoverflow.com/questions/39909419/what-are-the-main-differences-between-jwt-and-oauth-authentication)
-* OAuth 2.0 defines a protocol, i.e. specifies how tokens are transferred, JWT defines a token format.
+* OAuth 2.0 defines a __protocol, i.e. specifies how tokens are transferred__
+* JWT defines a __token format.__
 * OAuth 2.0 and "JWT authentication" have similar appearance when it comes to the (2nd) stage where the Client presents the token to the Resource Server: the token is passed in a header.
 * But "JWT authentication" is not a standard and does not specify how the Client obtains the token in the first place (the 1st stage). That is where the perceived complexity of OAuth comes from: it also defines various ways in which the Client can obtain an access token from something that is called an Authorization Server.
 * __So the real difference is that JWT is just a token format, OAuth 2.0 is a protocol (that may use a JWT as a token format).__
@@ -125,6 +126,24 @@ HMACSHA256(
 * user state is stored on the client.
 * token based authentication scales better than that of a session because tokens are stored on the client side while session makes use of the server memory
 
+## [THE HARD PARTS OF JWT SECURITY NOBODY TALKS ABOUT](https://www.pingidentity.com/en/company/blog/posts/2019/jwt-security-nobody-talks-about.html)
+### Symmetric JWT Signatures
+* Single key to encrypt and decrypt signature with
+  * i.e.
+  ```
+  HMACSHA256(
+    base64UrlEncode(header) + "." +
+    base64UrlEncode(payload),
+    secret)
+  ```
+* The problem with using a single key is that __sharing your JWT with other services is unsafe__ because that single key is __needed for verification__ but can be abused to generate random (and potentially malicious) JWTs with valid signatures for the original service.
+  * so if an outside service that you are sharing your JWT with gets compromised, it compromises the security of your service as well.
+
+### Asymmetric JWT Signatures
+* Two separate keys (public/private) to encrypt and decrypt the signature with
+  * A signature __generated with a private key__ can be __verified with the public key.__
+  * This means that you let other services use your JWTs (and verify them), but lets your JWTs stay secure because __only you can make them with the private key.__
+
 ## Resources
 * https://jwt.io/introduction/
 * https://stackoverflow.com/questions/27301557/if-you-can-decode-jwt-how-are-they-secure
@@ -132,3 +151,4 @@ HMACSHA256(
 * https://zapier.com/engineering/apikey-oauth-jwt/
 * https://blog.logrocket.com/jwt-authentication-best-practices/
 * https://developer.okta.com/blog/2017/08/17/why-jwts-suck-as-session-tokens
+* https://www.pingidentity.com/en/company/blog/posts/2019/jwt-security-nobody-talks-about.html
