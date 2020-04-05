@@ -1,0 +1,3 @@
+# [Implementing JSON Web Tokens & Passport.js in a JavaScript Application with React](https://itnext.io/implementing-json-web-tokens-passport-js-in-a-javascript-application-with-react-b86b1f313436)
+...
+Good tutorial with explanations for why you're supposed to do certain things.
