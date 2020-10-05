@@ -1,0 +1,9 @@
+# Resources
+* https://www.smashingmagazine.com/2020/06/practical-guide-testing-react-applications-jest/
+* https://www.google.com/search?q=jesr+tutorial&rlz=1C1CHFX_enUS604US604&oq=jesr+tutorial&aqs=chrome..69i57.8479j0j7&sourceid=chrome&ie=UTF-8
+* [Jest](https://jestjs.io/)
+  * https://jestjs.io/docs/en/asynchronous
+  * https://jestjs.io/docs/en/tutorial-react
+* [Mocha](https://mochajs.org/)
+* https://testingjavascript.com/
+* https://www.browserstack.com/guide/top-javascript-testing-frameworks
