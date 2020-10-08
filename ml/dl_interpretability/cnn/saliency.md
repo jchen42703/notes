@@ -79,5 +79,8 @@ You can interpolate (resize) this heatmap to overlap with the input image to get
 
 ### Sources
 * [Implementing Grad-CAM in PyTorch](https://medium.com/@stepanulyanin/implementing-grad-cam-in-pytorch-ea0937c31e82)
-
+* [Grad-CAM: Visual Explanations from Deep Networks via Gradient-based Localization](https://arxiv.org/pdf/1610.02391.pdf)
+* https://github.com/1Konny/gradcam_plus_plus-pytorch/blob/master/gradcam.py
+* https://github.com/kazuto1011/grad-cam-pytorch/blob/master/grad_cam.py
+* https://github.com/raghakot/keras-vis/blob/master/vis/visualization/saliency.py#L199
 ## Guided Backpropagation
