@@ -35,3 +35,7 @@
 * __Private variables.__ One of the great advantages and the main reasons for classes in the first place, private variables, is just non-existent in JS.
 * __Strict hierarchies.__ Classes introduce a straight top-to-bottom order and make changes harder to implement, which is unacceptable in most JS applications.
 * __Because the React team tells you not to.__ While they did not explicitly deprecate the class-based components yet, they are likely to in the near future.
+
+## Other Resources
+* https://medium.com/@vapurrmaid/should-you-use-classes-in-javascript-82f3b3df6195
+* https://www.quora.com/Are-ES6-classes-bad-for-JavaScript
