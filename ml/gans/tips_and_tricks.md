@@ -26,3 +26,9 @@
     g_optimizer = tf.train.AdamOptimizer(self._lr)
     d_optimizer = tf.train.GradientDescentOptimizer(self._lr*FLAGS.d_lr_factor)
     ```
+
+## Vanishing Gradients
+Research has suggested that if your discriminator is too good, then generator training can fail due to vanishing gradients. In effect, an optimal discriminator doesn't provide enough information for the generator to make progress.
+### Attempts to Remedy
+* Wasserstein loss: The Wasserstein loss is designed to prevent vanishing gradients even when you train the discriminator to optimality.
+* Modified minimax loss: The original GAN paper proposed a modification to minimax loss to deal with vanishing gradients.
